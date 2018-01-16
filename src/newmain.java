@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 public class newmain extends JFrame{
     private JTextField answerfield;
-    private JButton one, two, three,four, five, six, seven, eight, nine, zero, add, sub, multiply, div, equals;
+    private JButton one, two, three,four, five, six, seven, eight, nine, zero, add, sub, multiply, div, equals,off,del,reset;
     private String stempl, stemp2, sanswer;
     private double answer = 0.0;
     private JPanel contentPanel;
@@ -28,7 +28,9 @@ public class newmain extends JFrame{
         multiply = new JButton("*");
         div = new JButton("/");
         equals = new JButton("=");
-        
+        off = new JButton("off/on");
+        reset=new JButton("reset");
+        del=new JButton("delete");
         Dimension dim = new Dimension(75,25);
         one.setPreferredSize(dim);
          two.setPreferredSize(dim);
@@ -45,14 +47,23 @@ public class newmain extends JFrame{
          multiply.setPreferredSize(dim);
          div.setPreferredSize(dim);
          equals.setPreferredSize(dim);
+         off.setPreferredSize(dim);
+         reset.setPreferredSize(dim);
+         del.setPreferredSize(dim);
          Numbers n = new Numbers();
          Calc c   = new Calc();  
          one.addActionListener(n); two.addActionListener(n); three.addActionListener(n); four.addActionListener(n);
          five.addActionListener(n); six.addActionListener(n); seven.addActionListener(n); eight.addActionListener(n);
            nine.addActionListener(n);zero.addActionListener(n);
-           
+            
          add.addActionListener(c);sub.addActionListener(c);multiply.addActionListener(c);div.addActionListener(c);
-         equals.addActionListener(c);
+         equals.addActionListener(c);off.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              System.exit(0);
+            }
+        });
        
         contentPanel = new JPanel();
         contentPanel.setBackground(Color.ORANGE);
@@ -62,6 +73,7 @@ public class newmain extends JFrame{
         contentPanel.add(five);contentPanel.add(six);contentPanel.add(seven);contentPanel.add(eight);
         contentPanel.add(nine);contentPanel.add(zero);contentPanel.add(add);contentPanel.add(sub);
         contentPanel.add(multiply);contentPanel.add(div);contentPanel.add(equals); 
+        contentPanel.add(off);
         this.setContentPane(contentPanel);
 } 
     private class Numbers implements ActionListener{
